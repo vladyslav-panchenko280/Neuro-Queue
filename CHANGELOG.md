@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.2.1...neuro-queue-v0.3.0) (2026-06-09)
+
+
+### Features
+
+* setup core structure of project ([34d6427](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/34d6427e9f5b626c0cefb99981f7f056ff15153b))
+
 ## [0.2.1](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.2.0...neuro-queue-v0.2.1) (2026-06-09)
 
 
