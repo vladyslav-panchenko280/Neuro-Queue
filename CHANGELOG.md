@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.5.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.4.0...neuro-queue-v0.5.0) (2026-06-09)
+
+
+### Features
+
+* setup docker environment ([1b91dbb](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/1b91dbba5403a2f2c2a4ec43427a4af7b7fb87b3))
+
 ## [0.4.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.3.1...neuro-queue-v0.4.0) (2026-06-09)
 
 
