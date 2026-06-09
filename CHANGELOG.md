@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.4.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.3.1...neuro-queue-v0.4.0) (2026-06-09)
+
+
+### Features
+
+* add docker-compose, verify all services are healthy ([9a44baa](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/9a44baa2431d6a9801f1f4e340b093e0ad4a1d56))
+* add docker-compose, verify all services are healthy ([3bc837d](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/3bc837d8aa8e7bdc63a8279e38452026db689ecb))
+
 ## [0.3.1](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.3.0...neuro-queue-v0.3.1) (2026-06-09)
 
 
