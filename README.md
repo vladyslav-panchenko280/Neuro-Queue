@@ -18,70 +18,80 @@ Direct calls to AI APIs break under load — no retries, no priority, no cost co
 
 ```
 Client
-  │  HTTP
+  │  HTTPS / REST
   ▼
-API Gateway          ← auth, rate limiting, validation
+API Gateway :3000       ← auth (X-API-Key), rate limiting, validation
   │
   ▼
-Task Orchestrator    ← persist, prioritize, publish
+Task Orchestrator :3001 ← persist, prioritize, backpressure, DLQ
   │
-  ▼  RabbitMQ (priority queues + DLQ)
-  ├── OpenAI Worker
-  ├── Anthropic Worker
-  └── Replicate Worker
+  ▼  RabbitMQ — priority queues (high=9 / medium=5 / low=1) + DLX
+  ├── OpenAI Worker :3002
+  ├── Anthropic Worker :3003
+  └── Replicate Worker :3004
          │
          ▼
-  PostgreSQL · Redis · Prometheus
+  PostgreSQL · Redis · Prometheus :9090
 ```
-
----
-
-## Key features
-
-- **Priority queues** — high / medium / low with native RabbitMQ priority
-- **Circuit breaker** — Redis-backed, shared across all worker replicas
-- **Rate limiting** — sliding window per API key and tier
-- **Response cache** — SHA-256 keyed, skip duplicate AI calls
-- **Request batching** — reduce provider costs by grouping concurrent tasks
-- **Backpressure** — 503 with `Retry-After` when queues are saturated
-- **Observability** — Prometheus metrics, structured JSON logs, health endpoints
 
 ---
 
 ## Quick start
 
-```bash
-cp .env.example .env       # add your AI provider keys
-docker compose up          # starts all services
-```
-
-Submit a task:
+**Prerequisites:** Node.js ≥ 18, pnpm ≥ 10, Docker Desktop
 
 ```bash
-curl -X POST http://localhost:3000/tasks \
-  -H "X-API-Key: your-key" \
-  -H "Content-Type: application/json" \
-  -d '{"provider":"openai","model":"gpt-4o","priority":"high","prompt":"Hello"}'
+# 1. Clone and install
+git clone https://github.com/vladyslav-panchenko280/NeuroQueue.git
+cd NeuroQueue
+pnpm install
+
+# 2. Configure environment
+cp .env.example .env   
+
+# 3. Start infrastructure
+pnpm run infra:up 
+
+cd services/api-gateway     && pnpm run start:dev
+cd services/task-orchestrator && pnpm run start:dev
+cd services/workers/openai  && pnpm run start:dev
 ```
 
-Poll status:
-
-```bash
-curl http://localhost:3000/tasks/{taskId} -H "X-API-Key: your-key"
-```
+**Useful URLs:**
+- API → http://localhost:3000
+- RabbitMQ UI → http://localhost:15672 (`app` / `app_dev_password`)
+- Prometheus → http://localhost:9090
 
 ---
 
-## Tech stack
+## API endpoints
 
-NestJS · RabbitMQ · PostgreSQL · Redis · Docker Compose · Prometheus · TypeScript
+| Method | Path | Auth | Description |
+|--------|------|------|-------------|
+| `POST` | `/tasks` | ✓ | Submit an AI task |
+| `GET` | `/tasks/:id` | ✓ | Poll task status |
+| `GET` | `/tasks/:id/result` | ✓ | Retrieve completed result |
+| `DELETE` | `/tasks/:id` | ✓ | Cancel a pending task |
+| `GET` | `/health` | — | Liveness probe |
+| `GET` | `/metrics` | — | Prometheus metrics |
+| `GET` | `/docs` | — | Swagger UI (dev only) |
 
-Full breakdown in [docs/TECH_STACK.md](docs/TECH_STACK.md).
+**Submit task payload:**
+```json
+{
+  "provider": "openai",
+  "model": "gpt-4o",
+  "priority": "high",
+  "prompt": "Summarize this text",
+  "parameters": { "max_tokens": 512, "temperature": 0.7 }
+}
+```
 
 ---
 
 ## Documentation
 
+- [Tech stack](docs/TECH_STACK.md)
 - [Contributing & branch conventions](docs/CONTRIBUTING.md)
 - [Commit message format](docs/CONVENTIONAL_COMMITS.md)
-- [Tech stack](docs/TECH_STACK.md)
+- [ADR-001 — Prometheus dev config](docs/ADR/001-prometheus-dev-prod-config.md)
