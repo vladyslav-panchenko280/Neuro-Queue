@@ -51,10 +51,6 @@ cp .env.example .env
 
 # 3. Start infrastructure
 pnpm run infra:up 
-
-cd services/api-gateway     && pnpm run start:dev
-cd services/task-orchestrator && pnpm run start:dev
-cd services/workers/openai  && pnpm run start:dev
 ```
 
 **Useful URLs:**
