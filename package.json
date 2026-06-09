@@ -2,7 +2,7 @@
   "name": "neuro-queue",
   "version": "0.2.0",
   "description": "The Distributed AI Task Queue & Orchestrator",
-  "main": "dist/main.js",
+  "private": true,
   "keywords": [
     "ai",
     "queue",
@@ -12,7 +12,15 @@
   ],
   "author": "vladyslav-panchenko280",
   "license": "MIT",
+  "packageManager": "pnpm@10.26.1",
   "engines": {
-    "node": ">=18.0.0"
+    "node": ">=18.0.0",
+    "pnpm": ">=10.0.0"
+  },
+  "scripts": {
+    "infra:up": "docker compose up -d",
+    "infra:down": "docker compose down",
+    "infra:logs": "docker compose logs -f",
+    "infra:reset": "docker compose down -v && docker compose up -d"
   }
 }
