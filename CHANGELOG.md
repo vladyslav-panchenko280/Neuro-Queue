@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.2.1](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.2.0...neuro-queue-v0.2.1) (2026-06-09)
+
+
+### Documentation
+
+* Remove unused link from README.md ([d55e472](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/d55e472dcce1d2c35cc852d4dcd6d77180e8aca6))
+
 ## [0.2.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.1.0...neuro-queue-v0.2.0) (2026-06-09)
 
 
