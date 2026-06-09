@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.3.1](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.3.0...neuro-queue-v0.3.1) (2026-06-09)
+
+
+### Bug Fixes
+
+* apply suggestions from code review ([c48b975](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/c48b975e94db080efa2d2b07e1054f4b5837a8c7))
+
 ## [0.3.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.2.1...neuro-queue-v0.3.0) (2026-06-09)
 
 
