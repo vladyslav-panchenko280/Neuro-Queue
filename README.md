@@ -85,4 +85,3 @@ Full breakdown in [docs/TECH_STACK.md](docs/TECH_STACK.md).
 - [Contributing & branch conventions](docs/CONTRIBUTING.md)
 - [Commit message format](docs/CONVENTIONAL_COMMITS.md)
 - [Tech stack](docs/TECH_STACK.md)
-- [Full PRD](.internal/distributed-ai-task-queue-prd.md)
