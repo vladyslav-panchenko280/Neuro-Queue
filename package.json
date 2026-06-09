@@ -1,0 +1,18 @@
+{
+  "name": "neuro-queue",
+  "version": "0.1.0",
+  "description": "The Distributed AI Task Queue & Orchestrator",
+  "main": "dist/main.js",
+  "keywords": [
+    "ai",
+    "queue",
+    "orchestrator",
+    "microservices",
+    "nestjs"
+  ],
+  "author": "vladyslav-panchenko280",
+  "license": "MIT",
+  "engines": {
+    "node": ">=18.0.0"
+  }
+}
