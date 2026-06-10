@@ -26,7 +26,7 @@ export class Task {
   priority: Priority;
 
   @Column({ type: 'varchar', default: TaskStatus.PENDING })
-  status: TaskStatus;
+  status!: TaskStatus;
 
   @Column({ type: 'text' })
   prompt: string;
@@ -37,24 +37,24 @@ export class Task {
   @Column({ type: 'jsonb', nullable: true })
   result: Record<string, unknown> | null;
 
-  @Column({ name: 'error_message', nullable: true })
+  @Column({ type: 'varchar', name: 'error_message', nullable: true })
   errorMessage: string | null;
 
   @Column({ name: 'retry_count', default: 0 })
-  retryCount: number;
+  retryCount!: number;
 
-  @Column({ name: 'worker_id', nullable: true })
+  @Column({ type: 'varchar', name: 'worker_id', nullable: true })
   workerId: string | null;
 
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @Column({ name: 'queued_at', nullable: true })
+  @Column({ type: 'timestamptz', name: 'queued_at', nullable: true })
   queuedAt: Date | null;
 
-  @Column({ name: 'started_at', nullable: true })
+  @Column({ type: 'timestamptz', name: 'started_at', nullable: true })
   startedAt: Date | null;
 
-  @Column({ name: 'completed_at', nullable: true })
+  @Column({ type: 'timestamptz', name: 'completed_at', nullable: true })
   completedAt: Date | null;
 }
