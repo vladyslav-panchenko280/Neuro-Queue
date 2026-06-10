@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, RelationId } from 'typeorm';
 import { User } from './user.entity';
 
 @Entity('api_keys')
@@ -7,16 +7,17 @@ export class ApiKey {
   id: string;
 
   @ManyToOne(() => User, (user) => user.apiKeys, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @Column({ name: 'user_id' })
+  @RelationId((apiKey: ApiKey) => apiKey.user)
   userId: string;
 
   @Column({ name: 'key_hash', unique: true })
   keyHash: string;
 
   @Column({ nullable: true })
-  name: string;
+  name: string | null;
 
   @Column({ default: false })
   revoked: boolean;

@@ -1,4 +1,4 @@
-import { IsEnum, IsNotEmpty, IsObject, IsOptional, IsString, MaxLength } from 'class-validator';
+import { IsEnum, IsNotEmpty, IsObject, IsOptional, IsString, IsUrl, MaxLength } from 'class-validator';
 import { Provider } from '../enums/provider.enum';
 import { Priority } from '../enums/priority.enum';
 
@@ -22,4 +22,14 @@ export class CreateTaskDto {
   @IsObject()
   @IsOptional()
   parameters?: Record<string, unknown>;
+
+  @IsString()
+  @IsOptional()
+  @MaxLength(128)
+  idempotencyKey?: string;
+
+  @IsUrl({ require_tld: false })
+  @IsOptional()
+  @MaxLength(2048)
+  callbackUrl?: string;
 }

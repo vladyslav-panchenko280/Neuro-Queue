@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, RelationId } from 'typeorm';
 import { User } from './user.entity';
 import { Provider } from '../enums/provider.enum';
 import { Priority } from '../enums/priority.enum';
@@ -10,9 +10,10 @@ export class Task {
   id: string;
 
   @ManyToOne(() => User, (user) => user.tasks, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'user_id' })
   user: User;
 
-  @Column({ name: 'user_id' })
+  @RelationId((task: Task) => task.user)
   userId: string;
 
   @Column({ type: 'varchar' })

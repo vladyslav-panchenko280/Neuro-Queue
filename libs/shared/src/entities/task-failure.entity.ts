@@ -1,4 +1,4 @@
-import { Column, CreateDateColumn, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, CreateDateColumn, Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn, RelationId } from 'typeorm';
 import { Task } from './task.entity';
 
 @Entity('task_failures')
@@ -7,9 +7,10 @@ export class TaskFailure {
   id: number;
 
   @ManyToOne(() => Task, { onDelete: 'CASCADE' })
+  @JoinColumn({ name: 'task_id' })
   task: Task;
 
-  @Column({ name: 'task_id' })
+  @RelationId((failure: TaskFailure) => failure.task)
   taskId: string;
 
   @Column({ nullable: true })
