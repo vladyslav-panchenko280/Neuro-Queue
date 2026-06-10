@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.6.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.5.0...neuro-queue-v0.6.0) (2026-06-10)
+
+
+### Features
+
+* add @neuroqueue/shared library with core entities, DTOs, and constants ([a21a151](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/a21a151433371999dcad4da15334181da117b6b9))
+* add @neuroqueue/shared library with core entities, DTOs, consts ([f22bb7a](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/f22bb7aa1359725914203f1ebd66a123e67fd6ba))
+
+
+### Bug Fixes
+
+* apply suggestions from code review ([955215b](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/955215b0b1ef2e34d8659487ad47151a40ccf2b0))
+
 ## [0.5.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.4.0...neuro-queue-v0.5.0) (2026-06-09)
 
 
