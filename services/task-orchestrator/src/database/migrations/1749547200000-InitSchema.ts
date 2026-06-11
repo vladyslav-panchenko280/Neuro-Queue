@@ -3,6 +3,8 @@ import { MigrationInterface, QueryRunner } from 'typeorm';
 export class InitSchema1749547200000 implements MigrationInterface {
   public async up(queryRunner: QueryRunner): Promise<void> {
     await queryRunner.query(`
+      CREATE EXTENSION IF NOT EXISTS "pgcrypto";
+
       CREATE TABLE IF NOT EXISTS "users" (
         "id"         UUID PRIMARY KEY DEFAULT gen_random_uuid(),
         "email"      VARCHAR NOT NULL UNIQUE,
