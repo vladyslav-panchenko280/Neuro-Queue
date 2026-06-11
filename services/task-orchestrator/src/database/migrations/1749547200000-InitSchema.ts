@@ -55,6 +55,9 @@ export class InitSchema1749547200000 implements MigrationInterface {
     await queryRunner.query(
       `CREATE INDEX "idx_tasks_created_at" ON "tasks" ("created_at" DESC)`,
     );
+    await queryRunner.query(
+      `CREATE INDEX "idx_tasks_user_id" ON "tasks" ("user_id")`,
+    );
 
     await queryRunner.query(`
       CREATE TABLE IF NOT EXISTS "task_failures" (
