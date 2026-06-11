@@ -13,13 +13,13 @@ export class TaskFailure {
   @RelationId((failure: TaskFailure) => failure.task)
   taskId: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   provider: string | null;
 
-  @Column({ name: 'error_code', nullable: true })
+  @Column({ type: 'varchar', name: 'error_code', nullable: true })
   errorCode: string | null;
 
-  @Column({ name: 'error_message', nullable: true })
+  @Column({ type: 'varchar', name: 'error_message', nullable: true })
   errorMessage: string | null;
 
   @Column({ name: 'attempt_number', default: 0 })
