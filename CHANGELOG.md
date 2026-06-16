@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.10.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.9.0...neuro-queue-v0.10.0) (2026-06-16)
+
+
+### Features
+
+* implement Block F - Health, Wiring, Verification ([fb9f86e](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/fb9f86e0500d71bf9a7927bc5ce9eb84dd20da24))
+* implement Block F -- Health, Wiring, Verification ([2c86569](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/2c865690dff7a011d1a4fef1e583f2179967cc03))
+
 ## [0.9.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.8.0...neuro-queue-v0.9.0) (2026-06-16)
 
 
