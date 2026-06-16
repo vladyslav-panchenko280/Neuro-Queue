@@ -6,6 +6,7 @@ import { AppController } from './app.controller';
 import { AppService } from './app.service';
 import { HealthController } from './health/health.controller';
 import { typeormConfig } from './database/typeorm.config';
+import { TasksModule } from './tasks/tasks.module';
 
 @Module({
   imports: [
@@ -14,6 +15,7 @@ import { typeormConfig } from './database/typeorm.config';
       useFactory: () => typeormConfig,
     }),
     TerminusModule,
+    TasksModule,
   ],
   controllers: [AppController, HealthController],
   providers: [AppService],
