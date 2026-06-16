@@ -16,7 +16,7 @@ export class ApiKey {
   @Column({ name: 'key_hash', unique: true })
   keyHash: string;
 
-  @Column({ nullable: true })
+  @Column({ type: 'varchar', nullable: true })
   name: string | null;
 
   @Column({ default: false })
@@ -25,6 +25,6 @@ export class ApiKey {
   @CreateDateColumn({ name: 'created_at' })
   createdAt: Date;
 
-  @Column({ name: 'last_used', nullable: true })
+  @Column({ type: 'timestamptz', name: 'last_used', nullable: true })
   lastUsed: Date | null;
 }
