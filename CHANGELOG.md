@@ -1,5 +1,12 @@
 # Changelog
 
+## [0.9.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.8.0...neuro-queue-v0.9.0) (2026-06-16)
+
+
+### Features
+
+* implement Block E — OpenAI worker with cache and circuit breaker ([6e4cf17](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/6e4cf17d82a67e1081adea3e9c22cad95fada4a7))
+
 ## [0.8.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.7.0...neuro-queue-v0.8.0) (2026-06-16)
 
 
