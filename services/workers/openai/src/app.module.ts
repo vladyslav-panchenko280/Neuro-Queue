@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { TerminusModule } from '@nestjs/terminus';
+import {
+  TerminusModule,
+  TypeOrmHealthIndicator,
+  MicroserviceHealthIndicator,
+} from '@nestjs/terminus';
 import { User, ApiKey, Task, TaskFailure } from '@neuroqueue/shared';
 import { AppController } from './app.controller';
 import { AppService } from './app.service';
@@ -28,6 +32,6 @@ import { WorkerModule } from './worker/worker.module';
     WorkerModule,
   ],
   controllers: [AppController, HealthController],
-  providers: [AppService],
+  providers: [AppService, TypeOrmHealthIndicator, MicroserviceHealthIndicator],
 })
 export class AppModule {}

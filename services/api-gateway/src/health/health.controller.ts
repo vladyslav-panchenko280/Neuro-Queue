@@ -1,13 +1,25 @@
 import { Controller, Get } from '@nestjs/common';
-import { HealthCheck, HealthCheckService } from '@nestjs/terminus';
+import {
+  HealthCheck,
+  HealthCheckService,
+  HttpHealthIndicator,
+} from '@nestjs/terminus';
+import { ConfigService } from '@nestjs/config';
 
 @Controller('health')
 export class HealthController {
-  constructor(private health: HealthCheckService) {}
+  constructor(
+    private readonly health: HealthCheckService,
+    private readonly http: HttpHealthIndicator,
+    private readonly config: ConfigService,
+  ) {}
 
   @Get()
   @HealthCheck()
   check() {
-    return this.health.check([]);
+    const orchestratorUrl = this.config.getOrThrow<string>('ORCHESTRATOR_URL');
+    return this.health.check([
+      () => this.http.pingCheck('orchestrator', `${orchestratorUrl}/health`),
+    ]);
   }
 }
