@@ -1,5 +1,22 @@
 # Changelog
 
+## [0.7.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.6.0...neuro-queue-v0.7.0) (2026-06-16)
+
+
+### Features
+
+* implement Block B — database setup with TypeORM and migrations ([5d612e8](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/5d612e8bc29daf4141467e0f8196a3e267e55eb5))
+* implement Block B — database setup with TypeORM and migrations ([0e7dec2](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/0e7dec29a740c181dfe11a78f484387eb868c6ee))
+* implement Block D — API Gateway task endpoints ([c384aaf](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/c384aaf1c717c542b564ef59529113a37c5ae3fe))
+* implement Block D — API Gateway task endpoints ([30f926c](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/30f926caf0ae6fcae5efecf2264e23100d87a475))
+
+
+### Bug Fixes
+
+* add index for user_id in tasks ([b15e045](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/b15e045a447faf69e60cf54cc6477ccebcac948c))
+* add pgcrypto sql extension ([8094183](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/8094183057b2a5746eecdc934a5fa4f8575fe74a))
+* issue with peer deps ([ace2fc4](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/ace2fc4366dfa38a3f6052b81dd7acfe7c757455))
+
 ## [0.6.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.5.0...neuro-queue-v0.6.0) (2026-06-10)
 
 
