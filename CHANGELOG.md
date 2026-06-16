@@ -1,5 +1,18 @@
 # Changelog
 
+## [0.10.1](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.10.0...neuro-queue-v0.10.1) (2026-06-16)
+
+
+### Bug Fixes
+
+* form-data CRLF injection resolving ([753302a](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/753302a6188ac516a7362d0824b867cae70032d9))
+* form-data CRLF injection resolving ([4db73b0](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/4db73b02deead12c6eb0285c66e15de9bafc9d73))
+
+
+### Documentation
+
+* create adr with form data CVE override ([b4419e5](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/b4419e5238b6fa78f894e5650fb0fbe9910636ef))
+
 ## [0.10.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.9.0...neuro-queue-v0.10.0) (2026-06-16)
 
 
