@@ -90,4 +90,3 @@ pnpm run infra:up
 - [Tech stack](docs/TECH_STACK.md)
 - [Contributing & branch conventions](docs/CONTRIBUTING.md)
 - [Commit message format](docs/CONVENTIONAL_COMMITS.md)
-- [ADR-001 — Prometheus dev config](docs/ADR/001-prometheus-dev-prod-config.md)
