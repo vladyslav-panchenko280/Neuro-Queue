@@ -1,5 +1,13 @@
 # Changelog
 
+## [0.8.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.7.0...neuro-queue-v0.8.0) (2026-06-16)
+
+
+### Features
+
+* implement Block C — Task Orchestrator with RabbitMQ ([5ad738f](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/5ad738f2f87be361d7acec8a622c734568827425))
+* implement Block C — Task Orchestrator with RabbitMQ ([686c889](https://github.com/vladyslav-panchenko280/Neuro-Queue/commit/686c8899c29cf747fb98486a573c3dff206f6fa0))
+
 ## [0.7.0](https://github.com/vladyslav-panchenko280/Neuro-Queue/compare/neuro-queue-v0.6.0...neuro-queue-v0.7.0) (2026-06-16)
 
 
