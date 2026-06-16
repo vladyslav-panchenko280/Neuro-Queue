@@ -1,6 +1,6 @@
 {
   "name": "neuro-queue",
-  "version": "0.6.0",
+  "version": "0.7.0",
   "description": "The Distributed AI Task Queue & Orchestrator",
   "private": true,
   "keywords": [
