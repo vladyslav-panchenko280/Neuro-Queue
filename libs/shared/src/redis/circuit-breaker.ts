@@ -33,14 +33,19 @@ export class CircuitBreaker {
     const state = await this.getState();
     if (state === 'OPEN') return;
 
-    const failures = await this.redis.incr(RedisKeys.circuitFailures(this.provider));
+    const failures = await this.redis.incr(
+      RedisKeys.circuitFailures(this.provider),
+    );
     // Short TTL on the failure counter so it resets after inactivity
     await this.redis.expire(RedisKeys.circuitFailures(this.provider), 60);
 
     if (failures >= this.failureThreshold) {
       await this.redis.set(RedisKeys.circuitState(this.provider), 'OPEN');
       // Transition to HALF_OPEN after the open timeout
-      await this.redis.pexpire(RedisKeys.circuitState(this.provider), this.openTimeoutMs);
+      await this.redis.pexpire(
+        RedisKeys.circuitState(this.provider),
+        this.openTimeoutMs,
+      );
     }
   }
 
@@ -51,7 +56,12 @@ export class CircuitBreaker {
     const state = await this.getState();
     if (state === 'CLOSED') {
       // Key expired (was OPEN), mark as HALF_OPEN for this probe attempt
-      await this.redis.set(RedisKeys.circuitState(this.provider), 'HALF_OPEN', 'EX', 30);
+      await this.redis.set(
+        RedisKeys.circuitState(this.provider),
+        'HALF_OPEN',
+        'EX',
+        30,
+      );
       return 'HALF_OPEN';
     }
     return state;

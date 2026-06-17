@@ -1,4 +1,4 @@
 packages:
-  - "services/*"
-  - "services/workers/*"
-  - "libs/*"
+  - 'services/*'
+  - 'services/workers/*'
+  - 'libs/*'

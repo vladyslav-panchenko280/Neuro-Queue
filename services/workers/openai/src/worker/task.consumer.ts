@@ -12,7 +12,6 @@ import {
   hashPrompt,
   ResponseCache,
   CircuitBreaker,
-  RedisKeys,
 } from '@neuroqueue/shared';
 import { InjectRedis } from '../redis/redis.decorator';
 import Redis from 'ioredis';
@@ -37,10 +36,17 @@ export class TaskConsumer {
     const ttl = config.get<number>('CACHE_TTL_SECONDS') ?? 3600;
     const threshold = config.get<number>('CIRCUIT_FAILURE_THRESHOLD') ?? 5;
     const timeout = config.get<number>('CIRCUIT_OPEN_TIMEOUT_MS') ?? 30000;
-    const successThreshold = config.get<number>('CIRCUIT_SUCCESS_THRESHOLD') ?? 2;
+    const successThreshold =
+      config.get<number>('CIRCUIT_SUCCESS_THRESHOLD') ?? 2;
 
     this.cache = new ResponseCache(redis, ttl);
-    this.circuit = new CircuitBreaker(redis, 'openai', threshold, timeout, successThreshold);
+    this.circuit = new CircuitBreaker(
+      redis,
+      'openai',
+      threshold,
+      timeout,
+      successThreshold,
+    );
   }
 
   @RabbitSubscribe({
@@ -72,7 +78,12 @@ export class TaskConsumer {
     });
 
     // E2 — cache lookup
-    const hash = hashPrompt(task.provider, task.model, task.prompt, task.parameters);
+    const hash = hashPrompt(
+      task.provider,
+      task.model,
+      task.prompt,
+      task.parameters,
+    );
     const cached = await this.cache.get(hash);
     if (cached) {
       this.logger.log(`Cache hit for task ${task.id}`);
@@ -86,14 +97,23 @@ export class TaskConsumer {
 
     // E3 — circuit breaker check
     if (await this.circuit.isOpen()) {
-      this.logger.warn(`Circuit OPEN for openai — failing task ${task.id} fast`);
+      this.logger.warn(
+        `Circuit OPEN for openai — failing task ${task.id} fast`,
+      );
       return this.handleFailure(task, 'Circuit breaker OPEN', true);
     }
 
     // E4 — provider call
     try {
-      const result = await this.provider.complete(task.model, task.prompt, task.parameters);
-      const resultJson: Record<string, unknown> = result as unknown as Record<string, unknown>;
+      const result = await this.provider.complete(
+        task.model,
+        task.prompt,
+        task.parameters,
+      );
+      const resultJson: Record<string, unknown> = result as unknown as Record<
+        string,
+        unknown
+      >;
 
       // E5 success — persist + cache + ack
       await this.taskRepo.update(task.id, {
@@ -113,7 +133,11 @@ export class TaskConsumer {
     }
   }
 
-  private async handleFailure(task: Task, errorMessage: string, fastFail: boolean): Promise<Nack> {
+  private async handleFailure(
+    task: Task,
+    errorMessage: string,
+    fastFail: boolean,
+  ): Promise<Nack> {
     const current = await this.taskRepo.findOne({ where: { id: task.id } });
     const retryCount = (current?.retryCount ?? task.retryCount ?? 0) + 1;
 

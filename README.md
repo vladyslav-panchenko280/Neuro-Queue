@@ -47,13 +47,14 @@ cd NeuroQueue
 pnpm install
 
 # 2. Configure environment
-cp .env.example .env   
+cp .env.example .env
 
 # 3. Start infrastructure
-pnpm run infra:up 
+pnpm run infra:up
 ```
 
 **Useful URLs:**
+
 - API → http://localhost:3000
 - RabbitMQ UI → http://localhost:15672 (`app` / `app_dev_password`)
 - Prometheus → http://localhost:9090
@@ -62,17 +63,18 @@ pnpm run infra:up
 
 ## API endpoints
 
-| Method | Path | Auth | Description |
-|--------|------|------|-------------|
-| `POST` | `/tasks` | ✓ | Submit an AI task |
-| `GET` | `/tasks/:id` | ✓ | Poll task status |
-| `GET` | `/tasks/:id/result` | ✓ | Retrieve completed result |
-| `DELETE` | `/tasks/:id` | ✓ | Cancel a pending task |
-| `GET` | `/health` | — | Liveness probe |
-| `GET` | `/metrics` | — | Prometheus metrics |
-| `GET` | `/docs` | — | Swagger UI (dev only) |
+| Method   | Path                | Auth | Description               |
+| -------- | ------------------- | ---- | ------------------------- |
+| `POST`   | `/tasks`            | ✓    | Submit an AI task         |
+| `GET`    | `/tasks/:id`        | ✓    | Poll task status          |
+| `GET`    | `/tasks/:id/result` | ✓    | Retrieve completed result |
+| `DELETE` | `/tasks/:id`        | ✓    | Cancel a pending task     |
+| `GET`    | `/health`           | —    | Liveness probe            |
+| `GET`    | `/metrics`          | —    | Prometheus metrics        |
+| `GET`    | `/docs`             | —    | Swagger UI (dev only)     |
 
 **Submit task payload:**
+
 ```json
 {
   "provider": "openai",

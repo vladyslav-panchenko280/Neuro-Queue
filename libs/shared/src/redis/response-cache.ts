@@ -14,6 +14,11 @@ export class ResponseCache {
   }
 
   async set(hash: string, result: Record<string, unknown>): Promise<void> {
-    await this.redis.set(cacheKey(hash), JSON.stringify(result), 'EX', this.ttlSeconds);
+    await this.redis.set(
+      cacheKey(hash),
+      JSON.stringify(result),
+      'EX',
+      this.ttlSeconds,
+    );
   }
 }
