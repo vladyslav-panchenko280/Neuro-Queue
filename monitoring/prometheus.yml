@@ -5,19 +5,19 @@ global:
 scrape_configs:
   - job_name: prometheus
     static_configs:
-      - targets: ["localhost:9090"]
+      - targets: ['localhost:9090']
 
   - job_name: api-gateway
     metrics_path: /metrics
     static_configs:
-      - targets: ["api-gateway:3000"]
+      - targets: ['api-gateway:3000']
 
   - job_name: task-orchestrator
     metrics_path: /metrics
     static_configs:
-      - targets: ["task-orchestrator:3001"]
+      - targets: ['task-orchestrator:3001']
 
   - job_name: worker-openai
     metrics_path: /metrics
     static_configs:
-      - targets: ["worker-openai:3002"]
+      - targets: ['worker-openai:3002']

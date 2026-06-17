@@ -1,4 +1,12 @@
-import { IsEnum, IsNotEmpty, IsObject, IsOptional, IsString, IsUrl, MaxLength } from 'class-validator';
+import {
+  IsEnum,
+  IsNotEmpty,
+  IsObject,
+  IsOptional,
+  IsString,
+  IsUrl,
+  MaxLength,
+} from 'class-validator';
 import { Provider } from '../enums/provider.enum';
 import { Priority } from '../enums/priority.enum';
 

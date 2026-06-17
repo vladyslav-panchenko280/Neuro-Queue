@@ -16,7 +16,9 @@ export class OpenAiProvider {
 
   constructor(private readonly config: ConfigService) {
     this.mock = config.get<string>('MOCK_PROVIDER') === 'true';
-    this.client = new OpenAI({ apiKey: config.get<string>('OPENAI_API_KEY') ?? 'mock' });
+    this.client = new OpenAI({
+      apiKey: config.get<string>('OPENAI_API_KEY') ?? 'mock',
+    });
   }
 
   async complete(
