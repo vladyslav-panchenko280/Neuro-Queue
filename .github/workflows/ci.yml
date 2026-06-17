@@ -21,4 +21,5 @@ jobs:
 
       - run: pnpm install --frozen-lockfile
 
+      - run: pnpm --filter @neuroqueue/shared run build
       - run: pnpm check
